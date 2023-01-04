@@ -49,10 +49,6 @@ class _GetStateObjectRouteState extends State<GetStateObjectRoute> {
             Builder(builder: (context) {
               return ElevatedButton(
                 onPressed: () {
-                  // 查找父级最近的Scaffold对应的ScaffoldState对象
-                  // ScaffoldState _state =
-                  //     context.findAncestorStateOfType<ScaffoldState>()!;
-
                   ScaffoldState _state = Scaffold.of(context);
                   // 打开抽屉菜单
                   _state.openDrawer();
@@ -74,7 +70,7 @@ class _GetStateObjectRouteState extends State<GetStateObjectRoute> {
               return ElevatedButton(
                 onPressed: () {
                   // 开销较大
-                  _globalKey.currentState?.openDrawer();
+                  _globalKey.currentState!.openDrawer();
                 },
                 child: const Text('GlobalKey获取State'),
               );
@@ -82,18 +78,17 @@ class _GetStateObjectRouteState extends State<GetStateObjectRoute> {
             Builder(builder: (context) {
               return ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context)
-                      .showMaterialBanner(MaterialBanner(
-                    content: const Text('MaterialBanner content'),
-                    actions: [
-                      TextButton(
-                          onPressed: () => print("action1"),
-                          child: const Text('action1')),
-                      TextButton(
-                          onPressed: () => print("action2"),
-                          child: const Text('action2')),
-                    ],
-                  ));
+                  ScaffoldMessenger.of(context).showMaterialBanner(
+                      MaterialBanner(
+                          content: const Text('MaterialBanner content'),
+                          actions: [
+                        TextButton(
+                            onPressed: () => print("action1"),
+                            child: const Text('action1')),
+                        TextButton(
+                            onPressed: () => print("action2"),
+                            child: const Text('action2'))
+                      ]));
                 },
                 child: const Text('显示MaterialBanner'),
               );
