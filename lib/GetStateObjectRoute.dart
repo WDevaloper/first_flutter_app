@@ -83,8 +83,9 @@ class _GetStateObjectRouteState extends State<GetStateObjectRoute> {
                           content: const Text('MaterialBanner content'),
                           actions: [
                         TextButton(
-                            onPressed: () => print("action1"),
-                            child: const Text('action1')),
+                            onPressed: () => ScaffoldMessenger.of(context)
+                                .hideCurrentMaterialBanner(),
+                            child: const Text('close')),
                         TextButton(
                             onPressed: () => print("action2"),
                             child: const Text('action2'))
